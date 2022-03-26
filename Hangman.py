@@ -9,7 +9,7 @@ enumerada = enumerate(palabra)
 
 def run():
     print("¡Adivina la palabra!")
-    print(type(enumerada))
+    print(enumerada)
 
 
     letra = str(input("Ingresa una letra: "))
