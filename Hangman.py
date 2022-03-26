@@ -13,28 +13,40 @@ enumerada = dict(enumerate(palabra,0))
 cuenta = len(enumerada)
 elegida = str(enumerada.get(random.randint(0,cuenta)))
 
-INTENTOS = 7 # Cuerpo del ahorcado + soga
+
 
 def run():
-    print("¡Adivina la palabra!")
-    
+    INTENTOS = 7 # Cuerpo del ahorcado + soga
     resultado = ["-" for i in range(len(elegida)-1)]
-    print(resultado)
-    
-    for i in range(INTENTOS):
+
+    # Reemplazo de los espacios por letras
+    for i in range(50):  
+        print("¡Adivina la palabra!")
+        
+        print(resultado," ", len(elegida), "letras")
+
+        print("Intentos: ", INTENTOS)
+
         letra = str(input("Ingresa una letra y presiona enter: "))
         for n in range(len(elegida)-1):
             if letra == elegida[n]:
                 resultado[n] = letra
                 INTENTOS += 1
-        break
+            
+        INTENTOS = INTENTOS - 1
+        if INTENTOS > 7:
+            INTENTOS = 7
+
+        os.system('cls')
         
-print(resultado)
-
-    
-
-
-
+        if INTENTOS == 0:
+            print("¡AHORCADO!")
+            break
+        if resultado == list(elegida):
+            print("¡Ganaste!")
+            break
+        
+        
 
 if __name__ == "__main__":
     run()
