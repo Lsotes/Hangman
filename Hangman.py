@@ -13,16 +13,23 @@ enumerada = dict(enumerate(palabra,0))
 cuenta = len(enumerada)
 elegida = str(enumerada.get(random.randint(0,cuenta)))
 
-intentos = 7
+INTENTOS = 7 # Cuerpo del ahorcado + soga
 
 def run():
     print("¡Adivina la palabra!")
-    resultado = []
     
-    for i in range(intentos):
+    resultado = ["-" for i in range(len(elegida)-1)]
+    print(resultado)
+    
+    for i in range(INTENTOS):
         letra = str(input("Ingresa una letra y presiona enter: "))
-        if letra == elegida[range(0,len(elegida)+1)]:
-            resultado.append(letra)
+        for n in range(len(elegida)-1):
+            if letra == elegida[n]:
+                resultado[n] = letra
+                INTENTOS += 1
+        break
+        
+print(resultado)
 
     
 
