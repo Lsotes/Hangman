@@ -12,7 +12,7 @@ enumerada = dict(enumerate(palabra,0))
 # Desarrollo del elector de palabras aleatorio
 cuenta = len(enumerada)
 elegida = str(enumerada.get(random.randint(0,cuenta)))
-
+elegida = list(elegida)
 
 
 def run():
@@ -41,9 +41,11 @@ def run():
         
         if INTENTOS == 0:
             print("¡AHORCADO!")
+            print("La palabra era: ", elegida)
             break
         if resultado == list(elegida):
             print("¡Ganaste!")
+            print("La palabra era: ", elegida)
             break
         
         
