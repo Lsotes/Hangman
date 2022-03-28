@@ -4,18 +4,17 @@ import os
 
 # Creación y enumeración de la base de datos de palabras
 with open("./data.txt","r",encoding="utf-8") as f:
-    palabra = [line.stip("\n") for line in f]
+    palabra = [line.strip("\n").upper() for line in f]
 
 enumerada = dict(enumerate(palabra,0))
 
 # Desarrollo del elector de palabras aleatorio
-cuenta = len(enumerada)
-elegida = str(enumerada.get(random.randint(0,cuenta)))
+elegida = str(enumerada.get(random.randint(0,len(enumerada))))
 elegida = list(elegida)
 
 def run():
     INTENTOS = 7 # Cuerpo del ahorcado + soga
-    resultado = ["-" for i in range(len(elegida)-1)]
+    resultado = ["-" for i in range(len(elegida))]
     respuestas = []
 
     # Reemplazo de los espacios por letras
@@ -25,10 +24,10 @@ def run():
         print("Intentos: ", INTENTOS)
         print("Tus letras: ",respuestas)
         
-        letra = input("Ingresa una letra y presiona enter: ") # str al principio
+        letra = input("Ingresa una letra y presiona enter: ").upper() # str al principio
         respuestas.append(letra)
 
-        for n in range(len(elegida)-1):
+        for n in range(len(elegida)):
             if letra == elegida[n]:
                 resultado[n] = letra
                 INTENTOS += 1
